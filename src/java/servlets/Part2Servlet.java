@@ -45,6 +45,12 @@ public class Part2Servlet extends HttpServlet {
         int count = 0;
         request.setAttribute("motivation", setphrase);
         
+        if(setphrase == null)
+        {
+            response.sendRedirect("part1");
+            return;
+        }
+        
         String path = getServletContext().getRealPath("/WEB-INF/list.txt");
         BufferedReader br = new BufferedReader(new FileReader(new File(path)));
         

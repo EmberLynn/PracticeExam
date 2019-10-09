@@ -19,6 +19,15 @@ public class Part1Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String phrase = (String)session.getAttribute("set");
+        
+        if(phrase != null)
+        {
+            response.sendRedirect("part2");
+            return;
+        }
+        
         getServletContext().getRequestDispatcher("/WEB-INF/part1.jsp").forward(request, response);
     }
 
